@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 import org.example.util.Utility;
 import org.example.view.CadastrarCliente;
+import org.example.view.CadastrarMotorista;
 import org.example.view.DefaultMenssage;
 import org.example.view.SairDoSistema;
 
@@ -19,9 +20,11 @@ public class Main {
         
         int op = 0;
 
-        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
-        System.out.println("  Sistema de Logística de Entregas");
-        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\n");
+        System.out.println("""
+            ╔══════════════════════════════════════════════════════╗
+            ║           SISTEMA DE LOGÍSTICA DE ENTREGAS           ║
+            ╚══════════════════════════════════════════════════════╝
+            """);
 
         listarOpcoes();
 
@@ -31,42 +34,63 @@ public class Main {
             switchCase(op);
         }catch(InputMismatchException e)
         {
-            System.err.println("Erro! Digite apenas números");
-        
-
-        
-        
+            util.cls(2);
+            System.err.println("""
+                Erro!
+            Digite apenas números válidos.
+            """);
+            util.delay(1500);
+        }
     }
-}
+
 
     private  static void switchCase (int op) {
         switch(op)
         {
             case 0 -> SairDoSistema.exibir();
             case 1 -> CadastrarCliente.menu();
+            case 2 -> CadastrarMotorista.menu();
             default -> DefaultMenssage.exibir();
         }
     }
 
-    private  static void listarOpcoes () {
-        System.out.println("""
-                1 - Cadastrar Cliente
-                2 - Cadastrar Motorista
-                3 - Criar Pedido
-                4 - Atribuir Pedido a Motorista (Gerar Entrega)
-                5 - Registrar Evento de Entrega (Histórico)
-                6 - Atualizar Status da Entrega
-                7 - Listar Todas as Entregas com Cliente e Motorista
-                8 - Relatório: Total de Entregas por Motorista
-                9 - Relatório: Clientes com Maior Volume Entregue
-                10 - Relatório: Pedidos Pendentes por Estado
-                11 - Relatório: Entregas Atrasadas por Cidade
-                12 - Buscar Pedido por CPF/CNPJ do Cliente
-                13 - Cancelar Pedido
-                14 - Excluir Entrega (com validação)
-                15 - Excluir Cliente (com verificação de dependência)
-                16 - Excluir Motorista (com verificação de dependência)
-                0 - Sair
-                """);
-    }
+    private static void listarOpcoes() {
+
+    System.out.println("""
+    ┌──────────────── CADASTROS ────────────────┐
+    │  1  - Cadastrar Cliente                   │
+    │  2  - Cadastrar Motorista                 │
+    └───────────────────────────────────────────┘
+
+    ┌──────────────── PEDIDOS ──────────────────┐
+    │  3  - Criar Pedido                        │
+    │  4  - Gerar Entrega                       │
+    │  5  - Registrar Evento                    │
+    │  6  - Atualizar Status                    │
+    │  7  - Listar Entregas                     │
+    └───────────────────────────────────────────┘
+
+    ┌──────────────── RELATÓRIOS ───────────────┐
+    │  8  - Total de Entregas por Motorista     │
+    │  9  - Clientes com Maior Volume           │
+    │ 10  - Pedidos Pendentes por Estado        │
+    │ 11  - Entregas Atrasadas por Cidade       │
+    └───────────────────────────────────────────┘
+
+    ┌──────────────── CONSULTAS ────────────────┐
+    │ 12  - Buscar Pedido por CPF/CNPJ          │
+    └───────────────────────────────────────────┘
+
+    ┌──────────────── EXCLUSÕES ────────────────┐
+    │ 13  - Cancelar Pedido                     │
+    │ 14  - Excluir Entrega                     │
+    │ 15  - Excluir Cliente                     │
+    │ 16  - Excluir Motorista                   │
+    └───────────────────────────────────────────┘
+
+    ┌──────────────── SISTEMA ──────────────────┐
+    │  0  - Sair                                │
+    └───────────────────────────────────────────┘
+""");
+}
 }

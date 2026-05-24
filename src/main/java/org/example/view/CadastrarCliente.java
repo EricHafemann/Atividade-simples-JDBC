@@ -27,13 +27,13 @@ public class CadastrarCliente {
         System.out.println("\nDigite a cidade do cliente: ");
         String cidade = util.lString();
 
-        System.out.println("\nDigite o estado do cliente: ");
+        System.out.println("\nDigite a sigla do cliente (EX: SP, SC): ");
         String estado = util.lString();
 
-        // Instancia objeto Usuário que vai ser enviado
+        // Instancia objeto cliente que vai ser enviado
         Cliente clienteRequest = new Cliente(nome, cpf_cnpj, endereco, cidade, estado);
 
-        // Cliente que ira ser recebido (Com o Id)
+        // Cliente que será retornado (Com o Id)
         Cliente clienteResponse = null;
 
         // Instancia service onde está concentrada a regra de negócio

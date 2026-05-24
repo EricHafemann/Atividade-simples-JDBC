@@ -8,7 +8,7 @@ import org.example.repository.ClienteRepository;
 
 public class ClienteService {
 
-    private final static ClienteRepository clienteRepository = new ClienteRepository();
+    private final ClienteRepository clienteRepository = new ClienteRepository();
     
     public Cliente insertCliente (Cliente cliente) throws SQLException, CpfExistException, IllegalArgumentException 
     {
@@ -24,7 +24,7 @@ public class ClienteService {
         
     }
 
-    public void validacaoCliente (Cliente cliente)
+    private void validacaoCliente (Cliente cliente)
     {
         if(cliente.getNome().isBlank())
         {
@@ -49,6 +49,16 @@ public class ClienteService {
         if(cliente.getEstado().isBlank())
         {
             throw new IllegalArgumentException("Estado não pode ser nulo!");
+        }
+
+        if(cliente.getEstado().length() != 2)
+        {
+            String menssagem = """
+                    Estado precisa estar no padrão de sigla:
+                    Exemplo: São Paulo -> SP
+                    """;
+
+            throw new IllegalArgumentException(menssagem);
         }
     }
 }

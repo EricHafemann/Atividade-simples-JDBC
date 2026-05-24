@@ -16,7 +16,7 @@ public class MotoristaRepository {
         
         String querySql = """
                 INSERT 
-                INTO MOTORISTA 
+                INTO Motorista
                     (nome, 
                     cnh, 
                     veiculo,
@@ -45,6 +45,35 @@ public class MotoristaRepository {
                 return motorista;
             }
 
+    }
+
+    public boolean existByCnh(String cnh) throws SQLException
+    {
+        boolean exit = false;
+
+        String sql = """
+                SELECT 
+                    id 
+                FROM 
+                Motorista 
+                WHERE 
+                cnh = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql))
+            {
+
+                stmt.setString(1, cnh);
+
+                ResultSet rs = stmt.executeQuery();
+
+                if(rs.next())
+                {
+                    exit = true;
+                }
+                return exit;
+            }
     }
 
     
