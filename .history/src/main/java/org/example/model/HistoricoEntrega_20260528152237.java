@@ -2,7 +2,7 @@ package org.example.model;
 
 import java.sql.Date;
 
-import org.example.model.enums.StatusEntrega;
+import org.example.model.enums.Status_Entrega;
 
 public class HistoricoEntrega {
 
@@ -11,23 +11,23 @@ public class HistoricoEntrega {
     private Motorista motorista;
     private Date dataSaida;
     private Date data_entrada;
-    private StatusEntrega statusEntrega;
+    private Status_Entrega statusEntrega;
     
-    public HistoricoEntrega(Long id, Pedido pedido, Motorista motorista, Date dataSaida, Date data_entrada,
-            StatusEntrega statusEntrega) {
+    public HistoricoEntrega(Long id, Pedido pedido, Motorista motorista, Date data_saida, Date data_entrada,
+            Status_Entrega statusEntrega) {
         this.id = id;
         this.pedido = pedido;
         this.motorista = motorista;
-        this.dataSaida = dataSaida;
+        this.data_saida = data_saida;
         this.data_entrada = data_entrada;
         this.statusEntrega = statusEntrega;
     }
 
-    public HistoricoEntrega(Pedido pedido, Motorista motorista, Date dataSaida, Date data_entrada,
-            StatusEntrega statusEntrega) {
+    public HistoricoEntrega(Pedido pedido, Motorista motorista, Date data_saida, Date data_entrada,
+            Status_Entrega statusEntrega) {
         this.pedido = pedido;
         this.motorista = motorista;
-        this.dataSaida = dataSaida;
+        this.data_saida = data_saida;
         this.data_entrada = data_entrada;
         this.statusEntrega = statusEntrega;
     }
@@ -56,12 +56,12 @@ public class HistoricoEntrega {
         this.motorista = motorista;
     }
 
-    public Date getDataSaida() {
-        return dataSaida;
+    public Date getData_saida() {
+        return data_saida;
     }
 
-    public void setDataSaida(Date dataSaida) {
-        this.dataSaida = dataSaida;
+    public void setData_saida(Date data_saida) {
+        this.data_saida = data_saida;
     }
 
     public Date getData_entrada() {
@@ -72,11 +72,11 @@ public class HistoricoEntrega {
         this.data_entrada = data_entrada;
     }
 
-    public StatusEntrega getStatusEntrega() {
+    public Status_Entrega getStatusEntrega() {
         return statusEntrega;
     }
 
-    public void setStatusEntrega(StatusEntrega statusEntrega) {
+    public void setStatusEntrega(Status_Entrega statusEntrega) {
         this.statusEntrega = statusEntrega;
     }
 

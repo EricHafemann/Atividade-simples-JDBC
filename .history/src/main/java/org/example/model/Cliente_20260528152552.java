@@ -7,27 +7,27 @@ public class Cliente extends Usuario{
     private String cidade;
     private String estado;
     
-    public Cliente(Long id, String nome, String cpfCnpj, String endereco, String cidade, String estado) {
+    public Cliente(Long id, String nome, String cpf_cnpj, String endereco, String cidade, String estado) {
         super(id, nome);
-        this.cpfCnpj = cpfCnpj;
+        this.cpfCnpj = cpf_cnpj;
         this.endereco = endereco;
         this.cidade = cidade;
         this.estado = estado;
     }
 
-    public Cliente(String nome, String cpfCnpj, String endereco, String cidade, String estado) {
+    public Cliente(String nome, String cpf_cnpj, String endereco, String cidade, String estado) {
         super(nome);
-        this.cpfCnpj = cpfCnpj;
+        this.cpf_cnpj = cpf_cnpj;
         this.endereco = endereco;
         this.cidade = cidade;
         this.estado = estado;
     }
 
-    public String getCpfCnpj() {
-        return cpfCnpj;
+    public String getCpf_cnpj() {
+        return cpf_cnpj;
     }
-    public void setCpfCnpj(String cpfCnpj) {
-        this.cpfCnpj = cpfCnpj;
+    public void setCpf_cnpj(String cpf_cnpj) {
+        this.cpf_cnpj = cpf_cnpj;
     }
     public String getEndereco() {
         return endereco;
@@ -54,7 +54,7 @@ public class Cliente extends Usuario{
         System.out.println("+-+ Informações do Cliente +-=");
         System.out.println("= ID:       "+getId());
         System.out.println("= NOME:     "+getNome());
-        System.out.println("= CPF/CNPJ: "+getCpfCnpj());
+        System.out.println("= CPF/CNPJ: "+getCpf_cnpj());
         System.out.println("= Endereço: "+getEndereco());
         System.out.println("= Cidade:   "+getCidade());
         System.out.println("= Estado:   "+getEstado());

@@ -29,7 +29,7 @@ public class PedidoRepository {
             PreparedStatement stmt = conn.prepareStatement(querySql, Statement.RETURN_GENERATED_KEYS))
             {
                 stmt.setLong(1, pedido.getCliente().getId());
-                stmt.setDouble(2, pedido.getVolume());
+                stmt.setDouble(2, pedido.getVolume_m3());
                 stmt.setDouble(3, pedido.getPeso());
                 stmt.setString(4, pedido.getStatusPedido().getDescricao());
 

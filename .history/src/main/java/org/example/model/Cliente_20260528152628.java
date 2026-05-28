@@ -54,7 +54,7 @@ public class Cliente extends Usuario{
         System.out.println("+-+ Informações do Cliente +-=");
         System.out.println("= ID:       "+getId());
         System.out.println("= NOME:     "+getNome());
-        System.out.println("= CPF/CNPJ: "+getCpfCnpj());
+        System.out.println("= CPF/CNPJ: "+getCpf_cnpj());
         System.out.println("= Endereço: "+getEndereco());
         System.out.println("= Cidade:   "+getCidade());
         System.out.println("= Estado:   "+getEstado());

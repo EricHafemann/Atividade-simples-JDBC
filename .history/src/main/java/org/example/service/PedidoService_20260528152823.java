@@ -33,7 +33,7 @@ public class PedidoService {
             throw new IllegalArgumentException("O peso do pedido não pode ser menor ou igual a 0 !");
         }
 
-        if(pedido.getVolume() <= 0 )
+        if(pedido.getVolume_m3() <= 0 )
         {
             throw new IllegalArgumentException("O volume do pedido não pode ser menor ou igual a 0 !");
         }

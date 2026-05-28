@@ -37,7 +37,7 @@ public class ClienteService {
             throw new IllegalArgumentException("Nome não pode ser nulo!");
         }
 
-        if(cliente.getCpfCnpj().isBlank())
+        if(cliente.getCpf_cnpj().isBlank())
         {
             throw new IllegalArgumentException("CPF ou CNPJ não pode ser nulo!");
         }

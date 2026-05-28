@@ -2,7 +2,7 @@ package org.example.model;
 
 import java.sql.Date;
 
-import org.example.model.enums.StatusEntrega;
+import org.example.model.enums.Status_Entrega;
 
 public class HistoricoEntrega {
 
@@ -14,7 +14,7 @@ public class HistoricoEntrega {
     private StatusEntrega statusEntrega;
     
     public HistoricoEntrega(Long id, Pedido pedido, Motorista motorista, Date dataSaida, Date data_entrada,
-            StatusEntrega statusEntrega) {
+            Status_Entrega statusEntrega) {
         this.id = id;
         this.pedido = pedido;
         this.motorista = motorista;
@@ -24,7 +24,7 @@ public class HistoricoEntrega {
     }
 
     public HistoricoEntrega(Pedido pedido, Motorista motorista, Date dataSaida, Date data_entrada,
-            StatusEntrega statusEntrega) {
+            Status_Entrega statusEntrega) {
         this.pedido = pedido;
         this.motorista = motorista;
         this.dataSaida = dataSaida;
@@ -72,11 +72,11 @@ public class HistoricoEntrega {
         this.data_entrada = data_entrada;
     }
 
-    public StatusEntrega getStatusEntrega() {
+    public Status_Entrega getStatusEntrega() {
         return statusEntrega;
     }
 
-    public void setStatusEntrega(StatusEntrega statusEntrega) {
+    public void setStatusEntrega(Status_Entrega statusEntrega) {
         this.statusEntrega = statusEntrega;
     }
 

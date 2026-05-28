@@ -7,7 +7,6 @@ import org.example.view.CadastrarCliente;
 import org.example.view.CadastrarMotorista;
 import org.example.view.CadastrarPedido;
 import org.example.view.DefaultMenssage;
-import org.example.view.GerarEntrega;
 import org.example.view.SairDoSistema;
 
 public class Main {

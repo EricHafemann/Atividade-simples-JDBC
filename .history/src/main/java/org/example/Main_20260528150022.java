@@ -7,7 +7,6 @@ import org.example.view.CadastrarCliente;
 import org.example.view.CadastrarMotorista;
 import org.example.view.CadastrarPedido;
 import org.example.view.DefaultMenssage;
-import org.example.view.GerarEntrega;
 import org.example.view.SairDoSistema;
 
 public class Main {
@@ -53,7 +52,7 @@ public class Main {
             case 1 -> CadastrarCliente.menu();
             case 2 -> CadastrarMotorista.menu();
             case 3 -> CadastrarPedido.menu();
-            case 4 -> GerarEntrega.menu();
+            case 4 -> 
             default -> DefaultMenssage.exibir();
         }
     }

@@ -23,12 +23,12 @@ public class Pedido {
         this.statusPedido = statusPedido;
     }
 
-    public Pedido(Cliente cliente, Date data_pedido, double volume, double peso,
+    public Pedido(Cliente cliente, Date data_pedido, double volume, double peso_kg,
             StatusPedido statusPedido) {
         this.cliente = cliente;
         this.data_pedido = data_pedido;
-        this.volume = volume;
-        this.peso = peso;
+        this.volume_m3 = volume_m3;
+        this.peso_kg = peso_kg;
         this.statusPedido = statusPedido;
     }
 
@@ -56,20 +56,20 @@ public class Pedido {
         this.data_pedido = data_pedido;
     }
 
-    public double getVolume() {
-        return volume;
+    public double getVolume_m3() {
+        return volume_m3;
     }
 
-    public void setVolume(double volume) {
-        this.volume = volume;
+    public void setVolume_m3(double volume_m3) {
+        this.volume_m3 = volume_m3;
     }
 
-    public double getPeso() {
-        return peso;
+    public double getPeso_kg() {
+        return peso_kg;
     }
 
-    public void setPeso(double peso) {
-        this.peso = peso;
+    public void setPeso_kg(double peso_kg) {
+        this.peso_kg = peso_kg;
     }
 
     public StatusPedido getStatusPedido() {
@@ -85,8 +85,8 @@ public class Pedido {
         System.out.println("+-+ Informações do Pedido +-=");
         System.out.println("= ID:          "+getId());
         System.out.println("= Cliente:     "+getCliente().getNome());
-        System.out.println("= Peso(KG):    "+getPeso());
-        System.out.println("= Volume(m3):  "+getVolume());
+        System.out.println("= Peso(KG):    "+getPeso_kg());
+        System.out.println("= Volume(m3):  "+getVolume_m3());
         System.out.println("= Status:      "+getStatusPedido().getDescricao());
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
     }

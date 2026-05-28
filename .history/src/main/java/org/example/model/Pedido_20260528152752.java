@@ -85,8 +85,8 @@ public class Pedido {
         System.out.println("+-+ Informações do Pedido +-=");
         System.out.println("= ID:          "+getId());
         System.out.println("= Cliente:     "+getCliente().getNome());
-        System.out.println("= Peso(KG):    "+getPeso());
-        System.out.println("= Volume(m3):  "+getVolume());
+        System.out.println("= Peso(KG):    "+getPeso_kg());
+        System.out.println("= Volume(m3):  "+getVolume_m3());
         System.out.println("= Status:      "+getStatusPedido().getDescricao());
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
     }
