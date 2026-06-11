@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.example.config.ConnectionFactory;
 import org.example.model.Cliente;
-import org.example.model.Entrega;
 import org.example.model.Pedido;
 import org.example.model.enums.StatusPedido;
 

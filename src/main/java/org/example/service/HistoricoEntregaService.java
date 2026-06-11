@@ -7,9 +7,9 @@ import org.example.repository.HistoricoEntregaRepository;
 
 public class HistoricoEntregaService {
 
-    private static final HistoricoEntregaRepository historicoEntregaRepository = new HistoricoEntregaRepository();
+    private final HistoricoEntregaRepository historicoEntregaRepository = new HistoricoEntregaRepository();
 
-    public HistoricoEntrega inserHistoricoEntrega (HistoricoEntrega historicoEntrega) throws SQLException
+    public HistoricoEntrega insertHistoricoEntrega (HistoricoEntrega historicoEntrega) throws SQLException
     {
         validacaoHistoricoEntrega(historicoEntrega);
 

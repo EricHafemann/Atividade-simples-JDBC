@@ -46,7 +46,7 @@ public class CadastrarEntrega {
         String dataEntregaString = util.lString();
 
         LocalDate dataEntragaLocal = LocalDate.parse(dataEntregaString, formato);
-        Date dataEntrega = Date.valueOf(dataSaidaLocal);
+        Date dataEntrega = Date.valueOf(dataEntragaLocal);
 
         EntregaService entregaService = new EntregaService();
 
@@ -99,7 +99,7 @@ public class CadastrarEntrega {
 
         if(pedidos.isEmpty())
         {
-             util.cls(3);
+            util.cls(3);
             System.err.println("-- Não há Pedidos Cadastrados --");
             util.delay(2000);
             Main.menuPrincipal();

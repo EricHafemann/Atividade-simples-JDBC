@@ -23,4 +23,16 @@ public enum StatusEntrega {
     {
         return descricao;
     }
+
+    public static StatusEntrega fromDescricao (String descricao)
+    {
+        for(StatusEntrega status : StatusEntrega.values())
+        {
+            if(status.getDescricao().equals(descricao))
+            {
+                return status;
+            }
+        }
+        return null;
+    }
 }

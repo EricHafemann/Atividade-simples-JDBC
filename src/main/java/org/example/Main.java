@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import org.example.util.Utility;
 import org.example.view.viewCliente.CadastrarCliente;
 import org.example.view.viewEntrega.CadastrarEntrega;
+import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
 import org.example.view.viewPedido.CadastrarPedido;
@@ -58,6 +59,7 @@ public class Main {
             case 3 -> CadastrarPedido.menu();
             case 4 -> CadastrarEntrega.menu();
             case 5 -> CadastrarHistoricoEntrega.menu();
+            case 7 -> ListarEntregas.exibir();
             default -> DefaultMenssage.exibir();
         }
     }

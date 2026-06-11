@@ -19,7 +19,7 @@ public class EntregaService {
         LocalDate date = LocalDate.now();
         Date dataAtual = Date.valueOf(date); 
 
-        if(entrega.getDataEntrega().after(dataAtual))
+        if(entrega.getDataEntrega().before(dataAtual))
         {
             throw new IllegalArgumentException("Erro Data de entrega tem que ser Futura !");
         }
@@ -30,6 +30,11 @@ public class EntregaService {
         }
 
         return entregaRepository.insertEntrega(entrega);
+    }
+
+    public List<Entrega> findAll () throws SQLException
+    {
+        return entregaRepository.findAll();
     }
 
     public void validacaoEntrega(Entrega entrega)

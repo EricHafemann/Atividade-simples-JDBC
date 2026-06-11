@@ -54,4 +54,13 @@ public class HistoricoEntrega {
         this.descricao = descricao;
     }
 
+    public void exibirInfo ()
+    {
+        System.out.println("+-+ Registro do Histórico de Entrega +-=");
+        System.out.println("= ID:          "+getId());
+        System.out.println("= DATA EVENTO:        "+getDataEvento());
+        System.out.println("= ID da ENTREGA: "+getEntrega().getId());
+        System.out.println("= DESCRIÇÃO:         "+getDescricao());
+        System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+    }
 }

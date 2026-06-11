@@ -5,12 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.example.config.ConnectionFactory;
 import org.example.model.Cliente;
 import org.example.model.Entrega;
+import org.example.model.Motorista;
 import org.example.model.Pedido;
+import org.example.model.enums.StatusEntrega;
+import org.example.model.enums.StatusPedido;
 
 public class EntregaRepository {
 
@@ -54,6 +58,8 @@ public class EntregaRepository {
 
     public List<Entrega> findAll () throws SQLException
     {
+        List<Entrega> entregas = new ArrayList<>();
+
         String querySql = """
                 SELECT 
                     e.id, e.pedido_id, e.motorista_id, e.data_saida, e.data_entrega, e.status,
@@ -73,11 +79,50 @@ public class EntregaRepository {
 
                 while (rs.next()) {
                     
-                    Cliente cliente = new Cliente(
-                                            )
+                    Cliente cliente = new Cliente
+                    (
+                        rs.getLong("c.id"),
+                        rs.getString("c.nome"),
+                        rs.getString("c.cpf_cnpj"),
+                        rs.getString("c.endereco"),
+                        rs.getString("c.cidade"),
+                        rs.getString("c.estado")
+                    );
+
+                    Motorista motorista = new Motorista
+                    (
+                        rs.getLong("m.id"),
+                        rs.getString("m.nome"),
+                        rs.getString("m.veiculo"),
+                        rs.getString("m.cnh"),
+                        rs.getString("m.cidade_base")
+                    );
+
+                    Pedido pedido = new Pedido
+                    (
+                        rs.getLong("p.id"),
+                        cliente,
+                        rs.getDate("p.data_pedido"),
+                        rs.getDouble("p.volume_m3"),
+                        rs.getDouble("p.peso_kg"),
+                        StatusPedido.fromDescricao(rs.getString("p.status"))
+                    );
+
+                    Entrega entrega = new Entrega
+                    (
+                        rs.getLong("e.id"),
+                        pedido,
+                        motorista,
+                        rs.getDate("e.data_saida"),
+                        rs.getDate("e.data_entrega"),
+                        StatusEntrega.fromDescricao(rs.getString("e.status"))
+                    );
+
+
+                    entregas.add(entrega);
                 }
                 
+                return entregas;
             }
-        return null;
     }
 }
