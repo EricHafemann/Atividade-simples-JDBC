@@ -121,8 +121,37 @@ public class EntregaRepository {
 
                     entregas.add(entrega);
                 }
-                
+
                 return entregas;
+            }
+    }
+
+    public void updateEntrega (Entrega entrega) throws SQLException
+    {
+        String querySql = """
+
+                UPDATE Entrega set  
+                    pedido_id = ?,
+                    motorista_id = ?,
+                    data_saida = ?,
+                    data_entrega = ?,
+                    status = ?
+                WHERE id = ?
+                
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                stmt.setLong(1, entrega.getPedido().getId());
+                stmt.setLong(2, entrega.getMotorista().getId());
+                stmt.setDate(3, entrega.getDataSaida());
+                stmt.setDate(4, entrega.getDataEntrega());
+                stmt.setString(5, entrega.getStatusEntrega().getDescricao());
+
+                stmt.setLong(6, entrega.getId());
+
+                stmt.executeUpdate();
             }
     }
 }

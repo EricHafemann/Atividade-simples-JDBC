@@ -51,7 +51,7 @@ public class Cliente extends Usuario{
     @Override
     public void exibirInfo ()
     {
-        System.out.println("+-+ Informações do Cliente +-=");
+        System.out.println("+-+ Informações do Cliente +-+");
         System.out.println("= ID:       "+getId());
         System.out.println("= NOME:     "+getNome());
         System.out.println("= CPF/CNPJ: "+getCpfCnpj());

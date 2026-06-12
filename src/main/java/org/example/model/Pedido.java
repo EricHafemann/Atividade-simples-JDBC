@@ -82,7 +82,7 @@ public class Pedido {
 
     public void exibirInfo ()
     {
-        System.out.println("+-+ Informações do Pedido +-=");
+        System.out.println("+-+ Informações do Pedido +-+");
         System.out.println("= ID:          "+getId());
         System.out.println("= Cliente:     "+getCliente().getNome());
         System.out.println("= Peso(KG):    "+getPeso());

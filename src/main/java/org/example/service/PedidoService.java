@@ -22,6 +22,11 @@ public class PedidoService {
         return pedidoRepository.findAll();
     }
 
+    public void updatePedido (Pedido pedido) throws SQLException
+    {
+        pedidoRepository.updatePedido(pedido);
+    }
+
     private void validacaoPedido (Pedido pedido)
     {
         if(pedido.getCliente() == null)

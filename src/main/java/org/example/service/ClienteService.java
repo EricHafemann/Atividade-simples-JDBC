@@ -21,6 +21,12 @@ public class ClienteService {
             throw new CpfExistException("CPF já está registrado no sistema !");
         }
 
+
+        if(cliente.getCpfCnpj().length() < 11)
+        {
+            throw new IllegalArgumentException("Erro ! Precisa conter no mínmo 11 caracter");
+        }
+
         return clienteRepository.insertClient(cliente);
         
     }

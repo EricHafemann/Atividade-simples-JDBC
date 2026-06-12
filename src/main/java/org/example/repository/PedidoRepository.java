@@ -93,4 +93,32 @@ public class PedidoRepository {
                 return pedidos;
             }
     }
+
+    public void updatePedido (Pedido pedido) throws SQLException
+    {
+
+        String querySql = """
+                UPDATE Pedido set
+                    cliente_id = ?,
+                    data_pedido = ?,
+                    volume_m3 = ?,
+                    peso_kg = ?,
+                    status = ?
+                WHERE id = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                stmt.setLong(1, pedido.getCliente().getId());
+                stmt.setDate(2, pedido.getData_pedido());
+                stmt.setDouble(3, pedido.getVolume());
+                stmt.setDouble(4, pedido.getPeso());
+                stmt.setString(5, pedido.getStatusPedido().getDescricao());
+
+                stmt.setLong(6, pedido.getId());
+
+                stmt.executeUpdate();
+            }
+    }
 }

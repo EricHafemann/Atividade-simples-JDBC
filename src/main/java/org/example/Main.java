@@ -9,6 +9,7 @@ import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
 import org.example.view.viewPedido.CadastrarPedido;
+import org.example.view.viewSistema.AtualizarStatusEscolha;
 import org.example.view.viewSistema.DefaultMenssage;
 import org.example.view.viewSistema.SairDoSistema;
 
@@ -40,6 +41,7 @@ public class Main {
             switchCase(op);
         }catch(InputMismatchException e)
         {
+            util.lString();
             util.cls(2);
             System.err.println("""
                 Erro!
@@ -59,6 +61,7 @@ public class Main {
             case 3 -> CadastrarPedido.menu();
             case 4 -> CadastrarEntrega.menu();
             case 5 -> CadastrarHistoricoEntrega.menu();
+            case 6 -> AtualizarStatusEscolha.exibir();
             case 7 -> ListarEntregas.exibir();
             default -> DefaultMenssage.exibir();
         }

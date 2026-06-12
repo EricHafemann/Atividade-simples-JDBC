@@ -56,7 +56,7 @@ public class HistoricoEntrega {
 
     public void exibirInfo ()
     {
-        System.out.println("+-+ Registro do Histórico de Entrega +-=");
+        System.out.println("+-+ Registro do Histórico de Entrega +-+");
         System.out.println("= ID:          "+getId());
         System.out.println("= DATA EVENTO:        "+getDataEvento());
         System.out.println("= ID da ENTREGA: "+getEntrega().getId());

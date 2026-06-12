@@ -83,7 +83,7 @@ public class Entrega {
 
     public void exibirInfo ()
     {
-        System.out.println("+-+ Informações da Entrega +-=");
+        System.out.println("+-+ Informações da Entrega +-+");
         System.out.println("= ID:           "+getId());
         System.out.println("= Motorista:    "+getMotorista().getNome());
         System.out.println("= ID Pedido:    "+getPedido().getId());

@@ -89,8 +89,8 @@ public class CadastrarHistoricoEntrega {
         System.out.println("\nDigite a data do Evento: (Dia/Mês/Ano)");
         String dataEventoString = util.lString();
 
-        LocalDate dataSaidaLocal = LocalDate.parse(dataEventoString, formato);
-        Date dataEvento = Date.valueOf(dataSaidaLocal);
+        LocalDate dataEventoLocal = LocalDate.parse(dataEventoString, formato);
+        Date dataEvento = Date.valueOf(dataEventoLocal);
 
         System.out.println("\nDigite uma descrição para o Evento: ");
         String descricao = util.lString();

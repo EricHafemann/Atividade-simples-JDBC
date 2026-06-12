@@ -37,6 +37,11 @@ public class EntregaService {
         return entregaRepository.findAll();
     }
 
+    public void updateEntrega (Entrega entrega) throws SQLException
+    {
+        entregaRepository.updateEntrega(entrega);
+    }
+
     public void validacaoEntrega(Entrega entrega)
     {
         if(entrega.getMotorista() == null)

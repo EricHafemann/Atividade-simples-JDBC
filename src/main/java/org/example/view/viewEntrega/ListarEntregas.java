@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.example.Main;
 import org.example.model.Entrega;
 import org.example.service.EntregaService;
 import org.example.util.Utility;
@@ -38,5 +39,7 @@ public class ListarEntregas {
 
         System.out.println("\nAperte ENTER para voltar ao menu ...");
         util.lString();
+
+        Main.menuPrincipal();
     }
 }
