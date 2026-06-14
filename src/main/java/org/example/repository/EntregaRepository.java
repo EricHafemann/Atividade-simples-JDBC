@@ -188,4 +188,38 @@ public class EntregaRepository {
                 return listaEntregasPorMotorista;
             }
     }
+
+    public List<HashMap<String, Integer>> rankEntregasByClientes () throws SQLException
+    {
+        List<HashMap<String, Integer>>  listarRankEntregaByClientes = new ArrayList();
+
+        String querySql = """
+                SELECT 
+                    c.nome, 
+                    COALESCE(COUNT(e.id), 0) AS Total_Entregas 
+                FROM Cliente c
+                LEFT JOIN Pedido p ON p.cliente_id = c.id 
+                LEFT JOIN Entrega e ON e.pedido_id = p.id AND e.status = 'Entregue'
+                GROUP BY c.id, c.nome 
+                ORDER BY Total_Entregas DESC;   
+                """;
+                
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+
+                    HashMap<String, Integer> entregasPorCliente = new HashMap<>();
+                    
+                    entregasPorCliente.put(rs.getString("nome"), rs.getInt("Total_Entregas"));
+
+                    listarRankEntregaByClientes.add(entregasPorCliente);
+
+                }
+
+                return listarRankEntregaByClientes;
+            }
+    }
 }

@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import org.example.util.Utility;
 import org.example.view.viewCliente.CadastrarCliente;
 import org.example.view.viewEntrega.CadastrarEntrega;
+import org.example.view.viewEntrega.ClientesComMaisEntregasConcluidas;
 import org.example.view.viewEntrega.EntregasPorMotorista;
 import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
@@ -65,6 +66,7 @@ public class Main {
             case 6 -> AtualizarStatusEscolha.exibir();
             case 7 -> ListarEntregas.exibir();
             case 8 -> EntregasPorMotorista.exibir();
+            case 9 -> ClientesComMaisEntregasConcluidas.exibir();
             default -> DefaultMenssage.exibir();
         }
     }
