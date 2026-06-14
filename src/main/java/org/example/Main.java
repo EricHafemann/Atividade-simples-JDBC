@@ -6,6 +6,7 @@ import org.example.util.Utility;
 import org.example.view.viewCliente.CadastrarCliente;
 import org.example.view.viewEntrega.CadastrarEntrega;
 import org.example.view.viewEntrega.ClientesComMaisEntregasConcluidas;
+import org.example.view.viewEntrega.EntregasAtrasadasPorCidade;
 import org.example.view.viewEntrega.EntregasPorMotorista;
 import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
@@ -69,6 +70,7 @@ public class Main {
             case 8 -> EntregasPorMotorista.exibir();
             case 9 -> ClientesComMaisEntregasConcluidas.exibir();
             case 10 -> PedidosPendentesPorEstado.exibir();
+            case 11 -> EntregasAtrasadasPorCidade.exibir();
             default -> DefaultMenssage.exibir();
         }
     }

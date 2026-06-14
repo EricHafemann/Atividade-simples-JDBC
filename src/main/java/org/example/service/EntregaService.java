@@ -53,6 +53,11 @@ public class EntregaService {
         return entregaRepository.rankEntregasByClientes();
     }
 
+    public List<HashMap<String, Integer>> entregasAtrasadasPorCidade () throws SQLException
+    {
+        return entregaRepository.entregasAtrasadasPorCidade();
+    }
+
     public void validacaoEntrega(Entrega entrega)
     {
         if(entrega.getMotorista() == null)

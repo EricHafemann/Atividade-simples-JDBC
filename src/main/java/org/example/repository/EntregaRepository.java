@@ -222,4 +222,39 @@ public class EntregaRepository {
                 return listarRankEntregaByClientes;
             }
     }
+
+    public List<HashMap<String, Integer>> entregasAtrasadasPorCidade () throws SQLException
+    {
+        List<HashMap<String, Integer>>  listarEntregasAtrasadasPorCidade = new ArrayList();
+
+        String querySql = """
+                SELECT 
+                    c.cidade,
+                    COALESCE(COUNT(e.id), 0) AS quantidade
+                FROM Cliente c
+                LEFT JOIN Pedido p ON p.cliente_id = c.id
+                LEFT JOIN Entrega e ON e.pedido_id = p.id AND e.status = 'ATRASADA'
+                GROUP BY c.cidade
+                ORDER BY quantidade DESC
+                """;
+                
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+
+                    HashMap<String, Integer> entregasAtrasadasPorCidade = new HashMap<>();
+                    
+                    entregasAtrasadasPorCidade.put(rs.getString("cidade"), rs.getInt("quantidade"));
+
+                    listarEntregasAtrasadasPorCidade.add(entregasAtrasadasPorCidade);
+
+                }
+
+                return listarEntregasAtrasadasPorCidade;
+            }
+    }
+
 }
