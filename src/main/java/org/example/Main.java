@@ -11,6 +11,7 @@ import org.example.view.viewEntrega.EntregasPorMotorista;
 import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
+import org.example.view.viewPedido.BuscarPedidoPorCpfCnpj;
 import org.example.view.viewPedido.CadastrarPedido;
 import org.example.view.viewPedido.PedidosPendentesPorEstado;
 import org.example.view.viewSistema.AtualizarStatusEscolha;
@@ -71,6 +72,7 @@ public class Main {
             case 9 -> ClientesComMaisEntregasConcluidas.exibir();
             case 10 -> PedidosPendentesPorEstado.exibir();
             case 11 -> EntregasAtrasadasPorCidade.exibir();
+            case 12 -> BuscarPedidoPorCpfCnpj.exibir();
             default -> DefaultMenssage.exibir();
         }
     }

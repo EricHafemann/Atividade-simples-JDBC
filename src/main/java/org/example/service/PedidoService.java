@@ -28,6 +28,11 @@ public class PedidoService {
         pedidoRepository.updatePedido(pedido);
     }
 
+    public List<Pedido> buscarPedidoPorDocumento (String documento) throws SQLException
+    {
+        return pedidoRepository.buscarPedidosPorDocumento(documento);
+    }
+
     public List<HashMap<String, Integer>> pedidosPendentesPorEstado () throws SQLException
     {
         return pedidoRepository.pedidosPendentesPorEstado();

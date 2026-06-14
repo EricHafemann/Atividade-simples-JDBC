@@ -156,5 +156,49 @@ public class PedidoRepository {
         }
     }
 
+    public List<Pedido> buscarPedidosPorDocumento(String documento) throws SQLException {
+    List<Pedido> pedidos = new ArrayList<>();
+    
+    String querySql = "SELECT p.id, p.cliente_id, p.data_pedido, p.volume_m3, p.peso_kg, p.status, " +
+                 "c.id, c.nome, c.cpf_cnpj, c.endereco, c.cidade, c.estado " +
+                 "FROM Pedido p " +
+                 "LEFT JOIN Cliente c ON c.id = p.cliente_id " +
+                 "WHERE c.cpf_cnpj = ?";
+    
+    try(Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(querySql)) {
+        stmt.setString(1, documento);
+        
+            try(ResultSet rs = stmt.executeQuery()) {
+                
+                while(rs.next()) {
+
+                    Cliente cliente = new Cliente(
+                        rs.getLong("c.id"),
+                        rs.getString("c.nome"),
+                        rs.getString("c.cpf_cnpj"),
+                        rs.getString("c.endereco"),
+                        rs.getString("c.cidade"),
+                        rs.getString("c.estado")
+                    );
+        
+                    Pedido pedido = new Pedido(
+                        rs.getLong("p.id"),
+                        cliente,
+                        rs.getDate("p.data_pedido"),
+                        rs.getDouble("p.volume_m3"),
+                        rs.getDouble("p.peso_kg"),
+                        StatusPedido.fromDescricao(rs.getString("p.status"))
+                    );
+
+        
+                pedidos.add(pedido);
+            }
+        }
+    }
+    
+    return pedidos;
+}
+
     
 }
