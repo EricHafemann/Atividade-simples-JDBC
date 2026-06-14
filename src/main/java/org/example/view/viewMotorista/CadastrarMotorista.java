@@ -12,7 +12,7 @@ public class CadastrarMotorista {
     
     static Utility util = new Utility();
 
-    public static void menu () {
+    public static void exibir () {
         System.out.println("\n-- Cadastro de Motorista --\n");
 
         System.out.println("\nDigite o nome do motorista: ");

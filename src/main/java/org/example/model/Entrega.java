@@ -90,6 +90,7 @@ public class Entrega {
         System.out.println("= Data Saida:   "+getDataSaida());
         System.out.println("= Data Entrega: "+getDataEntrega());
         System.out.println("= Status:       "+getStatusEntrega().getDescricao());
+        System.out.println("= Cliente: "+getPedido().getCliente().getNome());
         System.out.println("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
     }
 

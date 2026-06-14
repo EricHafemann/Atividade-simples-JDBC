@@ -19,7 +19,7 @@ public class CadastrarHistoricoEntrega {
     
     static Utility util = new Utility();
 
-    public static void menu ()
+    public static void exibir ()
     {
         System.out.println("\n-- Registrar Evento de Entrega --\n");
 

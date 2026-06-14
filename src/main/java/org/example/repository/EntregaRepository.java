@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.example.config.ConnectionFactory;
 import org.example.model.Cliente;
@@ -152,6 +154,38 @@ public class EntregaRepository {
                 stmt.setLong(6, entrega.getId());
 
                 stmt.executeUpdate();
+            }
+    }
+
+    public List<HashMap<String, Integer>> countEntregasByMotorista () throws SQLException
+    {
+
+        List<HashMap<String, Integer>>  listaEntregasPorMotorista = new ArrayList();
+
+        String querySql = """
+                SELECT m.nome, COUNT(e.motorista_id) AS Total_Entregas
+                FROM Motorista m
+                LEFT JOIN Entrega e ON e.motorista_id = m.id
+                GROUP BY m.id, m.nome;   
+                """;
+
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+
+                    HashMap<String, Integer> entregasPorMotorista = new HashMap<>();
+                    
+                    entregasPorMotorista.put(rs.getString("nome"), rs.getInt("Total_Entregas"));
+
+                    listaEntregasPorMotorista.add(entregasPorMotorista);
+
+                }
+
+                return listaEntregasPorMotorista;
             }
     }
 }

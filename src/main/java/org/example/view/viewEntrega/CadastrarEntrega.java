@@ -22,7 +22,7 @@ public class CadastrarEntrega {
 
     private final static Utility util = new Utility();
 
-    public static void menu ()
+    public static void exibir ()
     {
         System.out.println("\n-- Cadastro de Entrega --\n");
     

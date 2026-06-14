@@ -3,6 +3,7 @@ package org.example.service;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 import org.example.model.Entrega;
@@ -40,6 +41,11 @@ public class EntregaService {
     public void updateEntrega (Entrega entrega) throws SQLException
     {
         entregaRepository.updateEntrega(entrega);
+    }
+
+    public List<HashMap<String, Integer>> countEntregasByMotoristas () throws SQLException
+    {
+        return entregaRepository.countEntregasByMotorista();
     }
 
     public void validacaoEntrega(Entrega entrega)

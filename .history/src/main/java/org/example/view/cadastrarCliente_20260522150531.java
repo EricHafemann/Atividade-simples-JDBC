@@ -1,6 +1,0 @@
-package org.example.view;
-
-public class cadastrarCliente {
-
-    ps
-}
