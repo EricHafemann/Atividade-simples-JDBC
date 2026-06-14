@@ -1,6 +1,7 @@
 package org.example.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.example.model.Pedido;
@@ -27,6 +28,10 @@ public class PedidoService {
         pedidoRepository.updatePedido(pedido);
     }
 
+    public List<HashMap<String, Integer>> pedidosPendentesPorEstado () throws SQLException
+    {
+        return pedidoRepository.pedidosPendentesPorEstado();
+    }
     private void validacaoPedido (Pedido pedido)
     {
         if(pedido.getCliente() == null)

@@ -11,6 +11,7 @@ import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
 import org.example.view.viewPedido.CadastrarPedido;
+import org.example.view.viewPedido.PedidosPendentesPorEstado;
 import org.example.view.viewSistema.AtualizarStatusEscolha;
 import org.example.view.viewSistema.DefaultMenssage;
 import org.example.view.viewSistema.SairDoSistema;
@@ -67,6 +68,7 @@ public class Main {
             case 7 -> ListarEntregas.exibir();
             case 8 -> EntregasPorMotorista.exibir();
             case 9 -> ClientesComMaisEntregasConcluidas.exibir();
+            case 10 -> PedidosPendentesPorEstado.exibir();
             default -> DefaultMenssage.exibir();
         }
     }

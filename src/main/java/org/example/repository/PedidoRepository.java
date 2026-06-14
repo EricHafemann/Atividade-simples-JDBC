@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.example.config.ConnectionFactory;
@@ -121,4 +122,39 @@ public class PedidoRepository {
                 stmt.executeUpdate();
             }
     }
+
+    public List<HashMap<String, Integer>>  pedidosPendentesPorEstado () throws SQLException
+    {
+
+        List<HashMap<String, Integer>> listPedidosPendentesPorEstado = new ArrayList<>();
+
+        String querySql = """
+                SELECT 
+                    c.estado,
+                    COUNT(p.id) as quantidade
+                FROM Pedido p
+                LEFT JOIN Cliente c ON c.id = p.cliente_id
+                WHERE p.status = 'PENDENTE'
+                GROUP BY c.estado
+                ORDER BY quantidade desc;
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+        {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                HashMap<String, Integer> pedidosPendentesPorEstado = new HashMap<>();
+
+                pedidosPendentesPorEstado.put(rs.getString("estado"), rs.getInt("quantidade"));
+
+                listPedidosPendentesPorEstado.add(pedidosPendentesPorEstado);
+            }
+
+            return listPedidosPendentesPorEstado;
+        }
+    }
+
+    
 }
