@@ -257,4 +257,84 @@ public class EntregaRepository {
             }
     }
 
+    public Entrega findById(Long id) throws SQLException
+    {
+        String querySql = """
+                SELECT 
+                    e.id, e.pedido_id, e.motorista_id, e.data_saida, e.data_entrega, e.status,
+                    p.id, p.cliente_id, p.data_pedido, p.volume_m3, p.peso_kg, p.status,
+                    m.id, m.nome, m.cnh, m.veiculo, m.cidade_base,
+                    c.id, c.nome, c.cpf_cnpj, c.endereco, c.cidade, c.estado
+                FROM Entrega e
+                LEFT JOIN Pedido p ON e.pedido_id = p.id
+                LEFT JOIN Motorista m ON e.motorista_id = m.id
+                LEFT JOIN Cliente c ON p.cliente_id = c.id
+                WHERE e.id = ?
+                """;
+        
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+        {
+            stmt.setLong(1, id);
+            ResultSet rs = stmt.executeQuery();
+            
+            if(rs.next()) {
+                Cliente cliente = new Cliente
+                (
+                    rs.getLong("c.id"),
+                    rs.getString("c.nome"),
+                    rs.getString("c.cpf_cnpj"),
+                    rs.getString("c.endereco"),
+                    rs.getString("c.cidade"),
+                    rs.getString("c.estado")
+                );
+                
+                Motorista motorista = new Motorista
+                (
+                    rs.getLong("m.id"),
+                    rs.getString("m.nome"),
+                    rs.getString("m.veiculo"),
+                    rs.getString("m.cnh"),
+                    rs.getString("m.cidade_base")
+                );
+                
+                Pedido pedido = new Pedido
+                (
+                    rs.getLong("p.id"),
+                    cliente,
+                    rs.getDate("p.data_pedido"),
+                    rs.getDouble("p.volume_m3"),
+                    rs.getDouble("p.peso_kg"),
+                    StatusPedido.fromDescricao(rs.getString("p.status"))
+                );
+                
+                Entrega entrega = new Entrega
+                (
+                    rs.getLong("e.id"),
+                    pedido,
+                    motorista,
+                    rs.getDate("e.data_saida"),
+                    rs.getDate("e.data_entrega"),
+                    StatusEntrega.fromDescricao(rs.getString("e.status"))
+                );
+                
+                return entrega;
+            }
+            
+            return null;
+        }
+    }
+
+    public void delete(Long id) throws SQLException
+    {
+        String querySql = "DELETE FROM Entrega WHERE id = ?";
+        
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+        {
+            stmt.setLong(1, id);
+            stmt.executeUpdate();
+        }
+    }
+
 }

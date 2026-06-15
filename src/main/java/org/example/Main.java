@@ -8,6 +8,7 @@ import org.example.view.viewEntrega.CadastrarEntrega;
 import org.example.view.viewEntrega.ClientesComMaisEntregasConcluidas;
 import org.example.view.viewEntrega.EntregasAtrasadasPorCidade;
 import org.example.view.viewEntrega.EntregasPorMotorista;
+import org.example.view.viewEntrega.ExcluirEntrega;
 import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
@@ -75,6 +76,7 @@ public class Main {
             case 11 -> EntregasAtrasadasPorCidade.exibir();
             case 12 -> BuscarPedidoPorCpfCnpj.exibir();
             case 13 -> CancelarPedido.exibir();
+            case 14 -> ExcluirEntrega.exibir();
             default -> DefaultMenssage.exibir();
         }
     }

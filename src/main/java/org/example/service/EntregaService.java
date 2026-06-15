@@ -58,6 +58,16 @@ public class EntregaService {
         return entregaRepository.entregasAtrasadasPorCidade();
     }
 
+    public void delete(Long id) throws SQLException
+    {
+        entregaRepository.delete(id);
+    }
+
+    public Entrega findById (Long idEntrega) throws SQLException 
+    {
+        return entregaRepository.findById(idEntrega);
+    }
+
     public void validacaoEntrega(Entrega entrega)
     {
         if(entrega.getMotorista() == null)
