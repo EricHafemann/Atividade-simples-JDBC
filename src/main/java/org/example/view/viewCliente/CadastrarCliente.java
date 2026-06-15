@@ -44,7 +44,11 @@ public class CadastrarCliente {
             clienteResponse= clienteService.insertCliente(clienteRequest);
         }catch(SQLException | CpfExistException | IllegalArgumentException e)
         {
-            e.printStackTrace();
+            util.cls(5);
+            System.err.println(e.getMessage());
+            util.delay(2000);
+            util.cls(20);
+            Main.menuPrincipal();
         }
 
         if(clienteResponse != null)

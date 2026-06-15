@@ -1,6 +1,7 @@
 package org.example.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.example.exceptions.CpfExistException;
@@ -38,6 +39,18 @@ public class ClienteService {
 
     private void validacaoCliente (Cliente cliente)
     {
+        List<String> estadosValidos = new ArrayList<>(List.of(
+
+            "AC", "AL", "AP", "AM", "BA",
+            "CE", "DF", "ES", "GO", "MA",
+            "MT", "MS", "MG", "PA", "PB",
+            "PR", "PE", "PI", "RJ", "RN",
+            "RS", "RO", "RR", "SC", "SP",
+            "SE", "TO"
+
+    ));
+
+
         if(cliente.getNome().isBlank())
         {
             throw new IllegalArgumentException("Nome não pode ser nulo!");
@@ -71,6 +84,22 @@ public class ClienteService {
                     """;
 
             throw new IllegalArgumentException(menssagem);
+        }
+
+        boolean isEstadoValido = false;
+
+        for(String estado : estadosValidos)
+        {
+            if(cliente.getEstado().equalsIgnoreCase(estado))
+            {
+                isEstadoValido = true;
+                break;
+            }
+        }
+
+        if(!isEstadoValido)
+        {
+            throw new IllegalArgumentException("Estado escolhido não existe !");
         }
     }
 }

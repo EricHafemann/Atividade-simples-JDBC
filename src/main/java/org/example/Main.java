@@ -77,6 +77,7 @@ public class Main {
             case 12 -> BuscarPedidoPorCpfCnpj.exibir();
             case 13 -> CancelarPedido.exibir();
             case 14 -> ExcluirEntrega.exibir();
+            
             default -> DefaultMenssage.exibir();
         }
     }

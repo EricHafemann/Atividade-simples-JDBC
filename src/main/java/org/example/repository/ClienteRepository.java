@@ -109,5 +109,34 @@ public class ClienteRepository {
                 return clientes;
             }
     }
+
+    public boolean isPossuiPedidos (Long idCliente) throws SQLException
+    {
+
+        String querySql = """
+                SELECT 
+                    COUNT(*) AS Quantidade_Pedidos
+                FROM Pedido p
+                WHERE p.cliente_id = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                stmt.setLong(1, idCliente);
+
+                ResultSet rs = stmt.executeQuery();
+
+                if(rs.next())
+                {
+                    if(rs.getInt("Quantidade_Pedidos") > 0)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+    }
     
 }
