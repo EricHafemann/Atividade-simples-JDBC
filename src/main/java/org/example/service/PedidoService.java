@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.example.model.Pedido;
+import org.example.model.enums.StatusPedido;
 import org.example.repository.PedidoRepository;
 
 public class PedidoService {
@@ -37,6 +38,17 @@ public class PedidoService {
     {
         return pedidoRepository.pedidosPendentesPorEstado();
     }
+
+    public Pedido findById (Long id) throws SQLException
+    {
+        return pedidoRepository.buscarPorId(id);
+    }
+
+    public void atualizarStatus (Long idPedido, StatusPedido status) throws SQLException
+    {
+        pedidoRepository.atualizarStatus(idPedido, status);
+    }
+
     private void validacaoPedido (Pedido pedido)
     {
         if(pedido.getCliente() == null)

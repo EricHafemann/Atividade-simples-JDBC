@@ -170,7 +170,7 @@ public class PedidoRepository {
         stmt.setString(1, documento);
         
             try(ResultSet rs = stmt.executeQuery()) {
-                
+
                 while(rs.next()) {
 
                     Cliente cliente = new Cliente(
@@ -198,6 +198,54 @@ public class PedidoRepository {
     }
     
     return pedidos;
+}
+
+public Pedido buscarPorId(Long id) throws SQLException {
+    String querySql = "SELECT p.id, p.cliente_id, p.data_pedido, p.volume_m3, p.peso_kg, p.status, " +
+                 "c.id, c.nome, c.cpf_cnpj, c.endereco, c.cidade, c.estado " +
+                 "FROM Pedido p " +
+                 "INNER JOIN Cliente c ON c.id = p.cliente_id " +
+                 "WHERE p.id = ?";
+    
+    try(Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(querySql)) {
+        stmt.setLong(1, id);
+        
+        try(ResultSet rs = stmt.executeQuery()) {
+            if(rs.next()) {
+                Cliente cliente = new Cliente(
+                    rs.getLong("c.id"),
+                    rs.getString("c.nome"),
+                    rs.getString("c.cpf_cnpj"),
+                    rs.getString("c.endereco"),
+                    rs.getString("c.cidade"),
+                    rs.getString("c.estado")
+                );
+                
+                return new Pedido(
+                    rs.getLong("p.id"),
+                    cliente,
+                    rs.getDate("p.data_pedido"),
+                    rs.getDouble("p.volume_m3"),
+                    rs.getDouble("p.peso_kg"),
+                    StatusPedido.valueOf(rs.getString("p.status"))
+                );
+            }
+        }
+    }
+    
+    return null;
+}
+
+public void atualizarStatus(Long idPedido, StatusPedido status) throws SQLException {
+    String querySql = "UPDATE Pedido SET status = ? WHERE id = ?";
+    
+    try(Connection conn = ConnectionFactory.getConnection();
+        PreparedStatement stmt = conn.prepareStatement(querySql)) {
+        stmt.setString(1, status.getDescricao());
+        stmt.setLong(2, idPedido);
+        stmt.executeUpdate();
+    }
 }
 
     
