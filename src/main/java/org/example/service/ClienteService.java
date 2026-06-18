@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.example.exceptions.CpfExistException;
+import org.example.exceptions.EntidadeEmUsoException;
 import org.example.model.Cliente;
 import org.example.repository.ClienteRepository;
 
@@ -35,6 +36,22 @@ public class ClienteService {
     public List<Cliente> findAll () throws SQLException
     {
         return clienteRepository.findAll();
+    }
+
+    public boolean isPossuiPedidos (Long idCliente) throws SQLException
+    {
+        return clienteRepository.isPossuiPedidos(idCliente);
+    }
+
+    public void delete (Long idCliente) throws SQLException, EntidadeEmUsoException
+    {
+
+        if(isPossuiPedidos(idCliente))
+        {
+            throw new EntidadeEmUsoException("-- Entidade em uso ! Impossível remoção --");
+        }
+
+        clienteRepository.delete(idCliente);
     }
 
     private void validacaoCliente (Cliente cliente)

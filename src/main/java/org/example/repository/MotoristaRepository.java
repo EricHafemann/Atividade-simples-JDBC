@@ -114,6 +114,52 @@ public class MotoristaRepository {
             }
     }
 
+    public boolean isPossuiEntregas (Long idMotorista) throws SQLException
+    {
+
+        String querySql = """
+                SELECT 
+                    COUNT(*) AS Quantidade_Entregas
+                FROM Entrega e
+                WHERE e.motorista_id = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+            {
+                stmt.setLong(1, idMotorista);
+
+                ResultSet rs = stmt.executeQuery();
+
+                if(rs.next())
+                {
+                    if(rs.getInt("Quantidade_Entregas") > 0)
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+    }
+
+     public int delete (Long idMotorista) throws SQLException 
+    {
+        String querySql = """
+                DELETE FROM Motorista WHERE id = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+        {
+            stmt.setLong(1, idMotorista);
+
+            return stmt.executeUpdate();
+
+        }
+        
+    }
+
     
 }
 

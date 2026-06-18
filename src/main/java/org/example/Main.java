@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 import org.example.util.Utility;
 import org.example.view.viewCliente.CadastrarCliente;
+import org.example.view.viewCliente.DeletarCliente;
 import org.example.view.viewEntrega.CadastrarEntrega;
 import org.example.view.viewEntrega.ClientesComMaisEntregasConcluidas;
 import org.example.view.viewEntrega.EntregasAtrasadasPorCidade;
@@ -12,6 +13,7 @@ import org.example.view.viewEntrega.ExcluirEntrega;
 import org.example.view.viewEntrega.ListarEntregas;
 import org.example.view.viewHistoricoEntrega.CadastrarHistoricoEntrega;
 import org.example.view.viewMotorista.CadastrarMotorista;
+import org.example.view.viewMotorista.DeletarMotorista;
 import org.example.view.viewPedido.BuscarPedidoPorCpfCnpj;
 import org.example.view.viewPedido.CadastrarPedido;
 import org.example.view.viewPedido.CancelarPedido;
@@ -77,6 +79,8 @@ public class Main {
             case 12 -> BuscarPedidoPorCpfCnpj.exibir();
             case 13 -> CancelarPedido.exibir();
             case 14 -> ExcluirEntrega.exibir();
+            case 15 -> DeletarCliente.exibir();
+            case 16 -> DeletarMotorista.exibir();
             
             default -> DefaultMenssage.exibir();
         }

@@ -138,5 +138,22 @@ public class ClienteRepository {
                 return false;
             }
     }
+
+    public int delete (Long idCliente) throws SQLException 
+    {
+        String querySql = """
+                DELETE FROM Cliente WHERE id = ?
+                """;
+
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(querySql))
+        {
+            stmt.setLong(1, idCliente);
+
+            return stmt.executeUpdate();
+
+        }
+        
+    }
     
 }

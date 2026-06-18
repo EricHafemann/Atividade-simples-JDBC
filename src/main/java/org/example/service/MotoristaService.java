@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.example.exceptions.CnhExistException;
+import org.example.exceptions.EntidadeEmUsoException;
 import org.example.model.Motorista;
 import org.example.repository.MotoristaRepository;
 
@@ -27,6 +28,22 @@ public class MotoristaService {
     public List<Motorista> findAll () throws SQLException
     {
         return motoristaRepository.findAll();
+    }
+
+    public boolean isPossuiEntregas (Long idMotorista) throws SQLException
+    {
+        return motoristaRepository.isPossuiEntregas(idMotorista);
+    }
+
+    public void delete (Long idMotorista) throws SQLException, EntidadeEmUsoException
+    {
+
+        if(isPossuiEntregas(idMotorista))
+        {
+            throw new EntidadeEmUsoException("-- Entidade em uso ! Impossível remoção --");
+        }
+
+        motoristaRepository.delete(idMotorista);
     }
 
     private void validacaoMotorista (Motorista motorista)
